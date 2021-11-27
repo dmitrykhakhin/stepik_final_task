@@ -25,3 +25,20 @@ class ProductPage(BasePage):
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
+
+    def name_of_product_is_equal(self):
+        main_name_of_product = self.browser.find_element(*ProductPageLocators.MAIN_NAME_OF_PRODUCT)
+        main_name_of_product_text = main_name_of_product.text
+        name_of_product_in_success_message = self.browser.find_element(
+            *ProductPageLocators.NAME_OF_PRODUCT_IN_SUCCESS_MESSAGE)
+        name_of_product_in_success_message_text = name_of_product_in_success_message.text
+        assert main_name_of_product_text == name_of_product_in_success_message_text,\
+            "Не совпадают названия продуктов!"
+
+    def price_is_equal(self):
+        main_price_of_product = self.browser.find_element(*ProductPageLocators.MAIN_PRICE_OF_PRODUCT)
+        main_price_of_product_text = main_price_of_product.text
+        price_of_product_in_success_message = self.browser.find_element(
+            *ProductPageLocators.PRICE_OF_PRODUCT_IN_SUCCESS_MESSAGE)
+        price_of_product_in_success_message_text = price_of_product_in_success_message.text
+        assert main_price_of_product_text == price_of_product_in_success_message_text, "Цены не совпадают!"
