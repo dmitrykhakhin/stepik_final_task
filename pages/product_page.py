@@ -2,6 +2,7 @@ from .base_page import BasePage
 from .locators import ProductPageLocators
 from selenium.common.exceptions import NoAlertPresentException
 import math
+import pytest
 
 
 class ProductPage(BasePage):
@@ -42,3 +43,15 @@ class ProductPage(BasePage):
             *ProductPageLocators.PRICE_OF_PRODUCT_IN_SUCCESS_MESSAGE)
         price_of_product_in_success_message_text = price_of_product_in_success_message.text
         assert main_price_of_product_text == price_of_product_in_success_message_text, "Цены не совпадают!"
+
+    # def test_guest_cant_see_success_message_after_adding_product_to_basket(self):
+    #     assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+    #         "Success message is presented, but should not be"
+    #
+    # def test_guest_cant_see_success_message(self):
+    #     assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+    #        "Success message is presented, but should not be"
+    #
+    # def test_message_disappeared_after_adding_product_to_basket(self):
+    #     assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+    #         "Success message is presented, but should not be"
