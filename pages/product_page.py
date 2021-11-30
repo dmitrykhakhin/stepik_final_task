@@ -55,3 +55,9 @@ class ProductPage(BasePage):
     # def test_message_disappeared_after_adding_product_to_basket(self):
     #     assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
     #         "Success message is presented, but should not be"
+
+    def should_be_login_page(self):
+        self.should_be_login_url()
+
+    def should_be_login_url(self):
+        assert "login" in self.browser.current_url, "String login is not found in current url"
